@@ -1894,6 +1894,16 @@ async function startServer(): Promise<void> {
       res.sendFile(path.join(distDir, "index.html"));
     });
   } else {
+    app.use((req, res, next) => {
+      if (req.path === "/" || req.path === "/index.html" || req.path.startsWith("/src/")) {
+        delete req.headers["if-none-match"];
+        delete req.headers["if-modified-since"];
+        res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
+        res.setHeader("Pragma", "no-cache");
+        res.setHeader("Expires", "0");
+      }
+      next();
+    });
     const { createServer: createViteServer } = await import("vite");
     const vite = await createViteServer({
       server: { middlewareMode: true, hmr: false },

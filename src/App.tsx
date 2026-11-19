@@ -198,7 +198,7 @@ export default function App() {
   return (
     <div className="flex min-h-screen bg-slate-50 text-slate-900">
       {/* Sidebar Navigation */}
-      <aside className="hidden w-64 shrink-0 border-r border-slate-200 bg-white lg:flex lg:flex-col">
+      <aside className="hidden w-60 shrink-0 border-r border-slate-200 bg-white md:flex md:flex-col">
         <div className="flex h-14 items-center border-b border-slate-200 px-5">
           <span className="text-base font-bold tracking-tight text-slate-900 whitespace-nowrap">
             Swapup Scrapper
@@ -231,11 +231,12 @@ export default function App() {
       <div className="flex min-w-0 flex-1 flex-col">
         {/* Top Bar Contract: Brand/Breadcrumb — Nav — Primary Action */}
         <header className="flex h-14 items-center justify-between gap-8 border-b border-slate-200 bg-white px-6">
-          <div className="text-sm font-medium text-slate-700 whitespace-nowrap shrink-0">
-            Workspace / {tabTitles[activeTab]}
+          <div className="text-sm font-semibold text-slate-900 whitespace-nowrap shrink-0">
+            Swapup Scrapper{" "}
+            <span className="font-normal text-slate-500">/ {tabTitles[activeTab]}</span>
           </div>
 
-          <nav className="flex items-center gap-5 lg:hidden" aria-label="Compact navigation">
+          <nav className="flex items-center gap-5 md:hidden" aria-label="Compact navigation">
             {navItems.map((item) => (
               <button
                 key={item.id}
